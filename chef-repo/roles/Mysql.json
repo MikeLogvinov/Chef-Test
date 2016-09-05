@@ -1,0 +1,21 @@
+{
+  "name": "Mysql",
+  "description": "config for mysql",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "application repo": "http://www.cumulogic.com/download/Apps/guestbookapp.zip"
+  },
+  "override_attributes": {
+    "mysql_hostname": "MySqlGBDS",
+    "port": "3306"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[apt]",
+    "recipe[apt-zip]",
+    "recipe[mysql]"
+  ],
+  "env_run_lists": {
+
+  }
+}

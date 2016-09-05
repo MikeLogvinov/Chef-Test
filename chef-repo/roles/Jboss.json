@@ -1,0 +1,21 @@
+{
+  "name": "JBOSS",
+  "description": "config jbofor ss-6.0.0",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "application repo": "http://www.cumulogic.com/download/Apps/guestbookapp.zip"
+  },
+  "override_attributes": {
+    "mysql_hostname": "MySqlGBDS",
+    "port": "3306"
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[apt]",
+    "recipe[jboss6]",
+    "recipe[guestbookapp]"
+  ],
+  "env_run_lists": {
+
+  }
+}

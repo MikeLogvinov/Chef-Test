@@ -1,0 +1,68 @@
+Connecting to 127.0.0.1:2222
+127.0.0.1      -----> Existing Chef installation detected
+127.0.0.1      Starting the first Chef Client run...
+127.0.0.1      Starting Chef Client, version 12.13.37
+127.0.0.1      resolving cookbooks for run list: ["apt", "jboss6", "guestbookapp"]
+127.0.0.1      Synchronizing Cookbooks:
+127.0.0.1        - apt (0.1.0)
+127.0.0.1        - jboss6 (0.1.0)
+127.0.0.1        - java (1.39.0)
+127.0.0.1        - guestbookapp (0.1.0)
+127.0.0.1      Installing Cookbook Gems:
+127.0.0.1      Compiling Cookbooks...
+127.0.0.1      [2016-09-04T09:32:36+00:00] WARN: Chef::Provider::AptRepository already exists!  Cannot create deprecation class for LWRP provider apt_repository from cookbook apt
+127.0.0.1      [2016-09-04T09:32:36+00:00] WARN: AptRepository already exists!  Deprecation class overwrites Custom resource apt_repository from cookbook apt
+127.0.0.1      Converging 28 resources
+127.0.0.1      Recipe: apt::default
+127.0.0.1        * file[/var/lib/apt/periodic/update-success-stamp] action nothing (skipped due to action :nothing)
+127.0.0.1        * directory[/etc/apt/apt.conf.d] action create (up to date)
+127.0.0.1        * cookbook_file[/etc/apt/apt.conf.d/15update-stamp] action create (up to date)
+127.0.0.1        * execute[apt-get update] action nothing (skipped due to action :nothing)
+127.0.0.1        * execute[apt-get autoremove] action nothing (skipped due to action :nothing)
+127.0.0.1        * execute[apt-get autoclean] action nothing (skipped due to action :nothing)
+127.0.0.1        * execute[apt-get-update-periodic] action run (skipped due to not_if)
+127.0.0.1        * directory[/var/cache/local] action create (up to date)
+127.0.0.1        * directory[/var/cache/local/preseeding] action create (up to date)
+127.0.0.1        * template[/etc/apt/apt.conf.d/10recommends] action create (up to date)
+127.0.0.1        * apt_package[apt-transport-https] action install (up to date)
+127.0.0.1      Recipe: java::openjdk
+127.0.0.1        * apt_repository[openjdk-r-ppa] action add
+127.0.0.1          * execute[apt-cache gencaches] action nothing (skipped due to action :nothing)
+127.0.0.1          * apt_update[openjdk-r-ppa] action nothing (skipped due to action :nothing)
+127.0.0.1          * execute[install-key DA1A4A13543B466853BAF164EB9B1D8886F44E2A] action run (skipped due to not_if)
+127.0.0.1          * file[/etc/apt/sources.list.d/openjdk-r-ppa.list] action create (up to date)
+127.0.0.1           (up to date)
+127.0.0.1        * apt_package[openjdk-6-jdk] action install (up to date)
+127.0.0.1        * apt_package[openjdk-6-jre-headless] action install (up to date)
+127.0.0.1        * java_alternatives[set-java-alternatives] action set (up to date)
+127.0.0.1      Recipe: java::default_java_symlink
+127.0.0.1        * link[/usr/lib/jvm/default-java] action create (up to date)
+127.0.0.1      Recipe: java::set_java_home
+127.0.0.1        * ruby_block[set-env-java-home] action run
+127.0.0.1          - execute the ruby block set-env-java-home
+127.0.0.1        * directory[/etc/profile.d] action create (up to date)
+127.0.0.1        * file[/etc/profile.d/jdk.sh] action create (up to date)
+127.0.0.1      Recipe: jboss6::default
+127.0.0.1        * user[jboss] action create (up to date)
+127.0.0.1        * group[jboss] action modify (up to date)
+127.0.0.1        * directory[/usr/local/jboss] action create (up to date)
+127.0.0.1        * bash[put_files] action run (skipped due to not_if)
+127.0.0.1        * directory[/usr/local/jboss/default] action create (up to date)
+127.0.0.1        * template[/etc/init.d/jboss] action create (up to date)
+127.0.0.1        * service[jboss] action enable (up to date)
+127.0.0.1        * service[jboss] action start (up to date)
+127.0.0.1        * template[/etc/sudoers.d/jboss] action create (up to date)
+127.0.0.1      Recipe: guestbookapp::default
+127.0.0.1        * execute[cp xml file to jboss conf dir] action run
+127.0.0.1          - execute sudo cp /tmp/guestbookapp/guestbookapp.war /usr/local/jboss/jboss-6.0.0.Final/server/default/deploy/ && sudo cp /tmp/guestbookapp/guestbookapp.xml /usr/local/jboss/jboss-6.0.0.Final/server/default/conf/ 
+127.0.0.1      
+127.0.0.1      Running handlers:
+127.0.0.1      Running handlers complete
+127.0.0.1      
+127.0.0.1      Deprecated features used!
+127.0.0.1        method access to node attributes (node.foo.bar) is deprecated and will be removed in Chef 13, please use bracket syntax (node["foo"]["bar"]) at 2 locations:
+127.0.0.1          - /var/chef/cache/cookbooks/java/attributes/default.rb:22:in `from_file'
+127.0.0.1          - /var/chef/cache/cookbooks/java/libraries/helpers.rb:116:in `platform_requires_license_acceptance?'
+127.0.0.1      
+127.0.0.1      Chef Client finished, 2/33 resources updated in 21 seconds
+

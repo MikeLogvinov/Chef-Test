@@ -1,0 +1,190 @@
+Creating new client for tstsrv
+Creating new node for tstsrv
+Connecting to 127.0.0.1:2222
+127.0.0.1      -----> Existing Chef installation detected
+127.0.0.1      Starting the first Chef Client run...
+127.0.0.1      Starting Chef Client, version 12.13.37
+127.0.0.1      resolving cookbooks for run list: ["apt", "apt-zip", "mysql"]
+127.0.0.1      Synchronizing Cookbooks:
+127.0.0.1        - apt-zip (0.1.0)
+127.0.0.1        - apt (0.1.0)
+127.0.0.1        - mysql (0.1.0)
+127.0.0.1      Installing Cookbook Gems:
+127.0.0.1      Compiling Cookbooks...
+127.0.0.1      [2016-09-04T08:57:05+00:00] WARN: Chef::Provider::AptRepository already exists!  Cannot create deprecation class for LWRP provider apt_repository from cookbook apt
+127.0.0.1      [2016-09-04T08:57:05+00:00] WARN: AptRepository already exists!  Deprecation class overwrites Custom resource apt_repository from cookbook apt
+127.0.0.1      Converging 17 resources
+127.0.0.1      Recipe: apt::default
+127.0.0.1        * file[/var/lib/apt/periodic/update-success-stamp] action nothing (skipped due to action :nothing)
+127.0.0.1        * directory[/etc/apt/apt.conf.d] action create (up to date)
+127.0.0.1        * cookbook_file[/etc/apt/apt.conf.d/15update-stamp] action create (up to date)
+127.0.0.1        * execute[apt-get update] action nothing (skipped due to action :nothing)
+127.0.0.1        * execute[apt-get autoremove] action nothing (skipped due to action :nothing)
+127.0.0.1        * execute[apt-get autoclean] action nothing (skipped due to action :nothing)
+127.0.0.1        * execute[apt-get-update-periodic] action run (skipped due to not_if)
+127.0.0.1        * directory[/var/cache/local] action create (up to date)
+127.0.0.1        * directory[/var/cache/local/preseeding] action create (up to date)
+127.0.0.1        * template[/etc/apt/apt.conf.d/10recommends] action create (up to date)
+127.0.0.1        * apt_package[apt-transport-https] action install (up to date)
+127.0.0.1      Recipe: apt-zip::default
+127.0.0.1        * execute[apt-get update] action run
+127.0.0.1          - execute apt-get update -y
+127.0.0.1      Recipe: apt::default
+127.0.0.1        * file[/var/lib/apt/periodic/update-success-stamp] action touch
+127.0.0.1          - update utime on file /var/lib/apt/periodic/update-success-stamp
+127.0.0.1      Recipe: apt-zip::default
+127.0.0.1        * execute[apt-get zip] action run
+127.0.0.1          - execute apt-get install unzip -y
+127.0.0.1      Recipe: mysql::default
+127.0.0.1        * mysql_service[MySqlGBDS] action create
+127.0.0.1          * apt_package[MySqlGBDS :create mysql-server-5.5] action install (up to date)
+127.0.0.1          * service[MySqlGBDS :create mysql] action stop (up to date)
+127.0.0.1          * service[MySqlGBDS :create mysql] action disable (up to date)
+127.0.0.1          * apt_package[MySqlGBDS :create apparmor] action install (up to date)
+127.0.0.1          * directory[MySqlGBDS :create /etc/apparmor.d/local/mysql] action create (up to date)
+127.0.0.1          * template[MySqlGBDS :create /etc/apparmor.d/local/usr.sbin.mysqld] action create (up to date)
+127.0.0.1          * template[MySqlGBDS :create /etc/apparmor.d/usr.sbin.mysqld] action create (up to date)
+127.0.0.1          * template[MySqlGBDS :create /etc/apparmor.d/local/mysql/MySqlGBDS] action create (up to date)
+127.0.0.1          * service[MySqlGBDS :create apparmor] action nothing (skipped due to action :nothing)
+127.0.0.1          * group[MySqlGBDS :create mysql] action create (up to date)
+127.0.0.1          * user[MySqlGBDS :create mysql] action create (up to date)
+127.0.0.1          * file[MySqlGBDS :create /etc/mysql/my.cnf] action delete (up to date)
+127.0.0.1          * file[MySqlGBDS :create /etc/my.cnf] action delete (up to date)
+127.0.0.1          * link[MySqlGBDS :create /usr/share/my-default.cnf] action create (up to date)
+127.0.0.1          * directory[MySqlGBDS :create /etc/mysql-MySqlGBDS] action create (up to date)
+127.0.0.1          * directory[MySqlGBDS :create /etc/mysql-MySqlGBDS/conf.d] action create (up to date)
+127.0.0.1          * directory[MySqlGBDS :create /run/mysql-MySqlGBDS] action create (up to date)
+127.0.0.1          * directory[MySqlGBDS :create /var/log/mysql-MySqlGBDS] action create (up to date)
+127.0.0.1          * directory[MySqlGBDS :create /var/lib/mysql-MySqlGBDS] action create (up to date)
+127.0.0.1          * template[MySqlGBDS :create /etc/mysql-MySqlGBDS/my.cnf] action create (up to date)
+127.0.0.1          * bash[MySqlGBDS :create initial records] action run (skipped due to not_if)
+127.0.0.1           (up to date)
+127.0.0.1        * mysql_service[MySqlGBDS] action start
+127.0.0.1          * template[MySqlGBDS :start /usr/sbin/mysql-MySqlGBDS-wait-ready] action create (up to date)
+127.0.0.1          * template[MySqlGBDS :start /etc/init/mysql-MySqlGBDS.conf] action create (up to date)
+127.0.0.1          * service[MySqlGBDS :start mysql-MySqlGBDS] action start (up to date)
+127.0.0.1           (up to date)
+127.0.0.1        * remote_file[/tmp/some_archive.zip] action create (up to date)
+127.0.0.1        * execute[unzip-file] action run
+127.0.0.1          - execute unzip -n /tmp/some_archive.zip -d /tmp
+127.0.0.1        * execute[import_database] action run
+127.0.0.1          - execute mysql -S /var/run/mysql-MySqlGBDS/mysqld.sock -uroot -pchange-me < /tmp/guestbookapp/guestbookmysqldump.sql
+127.0.0.1      
+127.0.0.1      Running handlers:
+127.0.0.1      Running handlers complete
+127.0.0.1      
+127.0.0.1      Deprecated features used!
+127.0.0.1        Cloning resource attributes for execute[apt-get update] from prior resource (CHEF-3694)
+127.0.0.1      Previous execute[apt-get update]: /var/chef/cache/cookbooks/apt/recipes/default.rb:62:in `from_file'
+127.0.0.1      Current  execute[apt-get update]: /var/chef/cache/cookbooks/apt-zip/recipes/default.rb:9:in `from_file' at 1 location:
+127.0.0.1          - /var/chef/cache/cookbooks/apt-zip/recipes/default.rb:9:in `from_file'
+127.0.0.1        node.set is deprecated and will be removed in Chef 14, please use node.default/node.override (or node.normal only if you really need persistence) at 106 locations:
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:265:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:266:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:267:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:268:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:269:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:270:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:271:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:272:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:273:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:274:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:275:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:276:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:277:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:278:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:279:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:280:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:281:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:282:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:283:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:284:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:285:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:286:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:287:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:288:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:289:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:290:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:291:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:292:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:293:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:294:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:295:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:296:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:297:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:298:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:299:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:300:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:301:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:302:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:303:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:304:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:305:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:306:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:307:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:308:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:309:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:310:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:311:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:312:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:313:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:314:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:315:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:316:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:317:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:318:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:319:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:320:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:321:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:322:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:323:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:324:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:325:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:326:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:327:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:328:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:329:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:330:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:331:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:332:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:333:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:334:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:335:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:336:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:337:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:338:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:339:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:340:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:341:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:342:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:343:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:344:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:345:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:346:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:347:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:348:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:349:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:350:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:351:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:352:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:353:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:354:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:355:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:356:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:357:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:358:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:359:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:360:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:361:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:362:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:363:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:364:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:365:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:366:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:367:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:368:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:369:in `pkginfo'
+127.0.0.1          - /var/chef/cache/cookbooks/mysql/libraries/helpers.rb:370:in `pkginfo'
+127.0.0.1      
+127.0.0.1      Chef Client finished, 5/43 resources updated in 50 seconds
+
